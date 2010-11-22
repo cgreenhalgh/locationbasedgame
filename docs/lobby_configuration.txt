@@ -1,0 +1,67 @@
+How to configure the Lobby Service for this game...
+
+1) Create a suitable Game Template definition
+
+{
+	"id":"9498fda0-264f-4dd6-8da4-8dc088cb6475",
+	"title":"Location-based Game Test",
+	"description":"Test for simple locationbasedgame",
+	"language":"EN",
+	"visibility":"PUBLIC",
+	"clientTemplates":[
+	{
+		"title":"Android",
+		"clientType":"Android",
+		"minMajorVersion":1,
+		"minMinorVersion":6,
+		"minUpdateVersion":0,
+		"locationSpecific":true
+		"appLaunchUrl":"http://locationbasedgame.appspot.com/client/client.html"
+	}]
+}
+
+2) Create a suitable Game Server definition, 
+
+"title":"Location-based Game on GAE",
+"type":"EXPLODING_PLACES"
+"baseUrl":"http://locationbasedgame.appspot.com"
+"targetStatus":"UP"
+
+3) create a suitable Game Instance Factory
+
+
+{"gameServerId":"agxob3Jpem9ubG9iYnlyEAsSCkdhbWVTZXJ2ZXIYRAw",
+"gameTemplateId":"9498fda0-264f-4dd6-8da4-8dc088cb6475",
+"instanceCreateTimeWindowMs":60000,
+"instanceTitle":"on demand instnace",
+"instanceVisibility":"PUBLIC",
+"key":"agxob3Jpem9ubG9iYnlyGQsSE0dhbWVJbnN0YW5jZUZhY3RvcnkYRQw",
+"lastInstanceCheckTime":0,
+"lastInstanceStartTime":0,
+"newInstanceTokens":4,
+"newInstanceTokensMax":5,
+"newInstanceTokensPerHour":4,
+"serverConfigJson":"{\"contentGroup\":{\"tag\":\"tag123\"}}",
+"serverCreateTimeOffsetMs":10000,
+"serverEndTimeOffsetMs":0,
+"serverEndingTimeOffsetMs":180000,
+"serverStartTimeOffsetMs":0,
+"status":"ACTIVE",
+"allowAnonymousClients":false,
+"allowPrivateInstances":false,
+"createForAnonymousClient":false,
+"type":"ON_DEMAND",
+"durationMs":180000,
+"latitudeE6":0,
+"locationType":"GLOBAL",
+"longitudeE6":0,
+"maxNumSlots":10,
+"maxTime":1577836800000,
+"minTime":0,
+"radiusMetres":500,
+"startTimeCron":"0 * * * * ?",
+"startTimeOptionsJson":"[[0],[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59],[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],[1,2,3,4,5,6,7,8,9,10,11,12],[1,2,3,4,5,6,7],[2010,2011]]",
+"title":"on demand",
+"visibility":"PUBLIC"}
+
+
