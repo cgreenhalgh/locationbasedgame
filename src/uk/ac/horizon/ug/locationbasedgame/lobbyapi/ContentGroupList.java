@@ -75,8 +75,6 @@ public class ContentGroupList extends LobbyApiServlet {
 	@Override
 	protected void handleRequest(HttpServletRequest req, EntityManager em,
 			Document doc) throws RequestException {
-		if (!"GET".equals(req.getMethod()))
-			throw new RequestException(HttpServletResponse.SC_METHOD_NOT_ALLOWED, "ContentGroupList requires GET");
 		// TODO Auto-generated method stub
 		Query q = em.createQuery("SELECT x FROM "+GameConfiguration.class.getSimpleName()+" x");
 		// TODO order?

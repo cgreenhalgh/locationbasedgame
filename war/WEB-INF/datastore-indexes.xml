@@ -1,6 +1,6 @@
 <!-- Indices written at Mon, 22 Nov 2010 15:29:26 UTC -->
 
-<datastore-indexes>
+<datastore-indexes  autoGenerate="true">
 
     <!-- Used 3 times in query history -->
     <datastore-index kind="ClientLocation" ancestor="false" source="auto">
@@ -14,6 +14,12 @@
         <property name="current" direction="asc"/>
         <property name="gameClientKey" direction="asc"/>
         <property name="createdTime" direction="asc"/>
+    </datastore-index>
+
+	<datastore-index kind="Game" ancestor="false" source="manual">
+        <property name="status" direction="asc"/>
+        <property name="tag" direction="asc"/>
+        <property name="createdTime" direction="desc"/>
     </datastore-index>
 
 </datastore-indexes>
