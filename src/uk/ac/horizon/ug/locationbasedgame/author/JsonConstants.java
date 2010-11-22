@@ -24,8 +24,11 @@ package uk.ac.horizon.ug.locationbasedgame.author;
  *
  */
 public interface JsonConstants {
+	public static final String GAME_CONFIGURATION_ID = "gameConfigurationId";
 	public static final String ID = "id";
+	public static final String STATUS = "status";
 	public static final String TAG = "tag";
+	public static final String TITLE = "title";
 	public static final String VERSION = "version";
 	public static final String CREATED_TIME = "createdTime";
 }

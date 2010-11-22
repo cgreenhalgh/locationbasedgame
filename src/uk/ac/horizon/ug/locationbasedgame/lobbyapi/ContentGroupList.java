@@ -43,6 +43,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import uk.ac.horizon.ug.locationbasedgame.author.CRUDServlet;
+import uk.ac.horizon.ug.locationbasedgame.author.RequestException;
 import uk.ac.horizon.ug.locationbasedgame.model.EMF;
 import uk.ac.horizon.ug.locationbasedgame.model.GameConfiguration;
 
@@ -66,64 +67,32 @@ import uk.ac.horizon.ug.locationbasedgame.model.GameConfiguration;
  * @author cmg
  *
  */
-public class ContentGroupList extends HttpServlet {
-	/** logger */
-	static Logger logger = Logger.getLogger(CRUDServlet.class.getName());
+public class ContentGroupList extends LobbyApiServlet {
 
 	/* (non-Javadoc)
-	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 * @see uk.ac.horizon.ug.locationbasedgame.lobbyapi.LobbyApiServlet#handleGet(javax.servlet.http.HttpServletRequest, javax.persistence.EntityManager, org.w3c.dom.Document)
 	 */
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		
-		EntityManager em = EMF.get().createEntityManager();
-		try {
-			Query q = em.createQuery("SELECT x FROM "+GameConfiguration.class.getSimpleName()+" x");
-			// TODO order?
-			List<GameConfiguration> results = (List<GameConfiguration> )q.getResultList();
+	protected void handleRequest(HttpServletRequest req, EntityManager em,
+			Document doc) throws RequestException {
+		if (!"GET".equals(req.getMethod()))
+			throw new RequestException(HttpServletResponse.SC_METHOD_NOT_ALLOWED, "ContentGroupList requires GET");
+		// TODO Auto-generated method stub
+		Query q = em.createQuery("SELECT x FROM "+GameConfiguration.class.getSimpleName()+" x");
+		// TODO order?
+		List<GameConfiguration> results = (List<GameConfiguration> )q.getResultList();
 
-			// XML response
-			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-			dbf.setNamespaceAware(false);
-			DocumentBuilder db = dbf.newDocumentBuilder();
-			Document doc = db.newDocument();
-			Element arrayEl = doc.createElement("array");
-			doc.appendChild(arrayEl);
-		
-			for (GameConfiguration gc : results) {
-				Element itemEl = doc.createElement("item");
-				arrayEl.appendChild(itemEl);
-				Element cgEl = doc.createElement("ContentGroup");
-				itemEl.appendChild(cgEl);
-				addElement(doc, cgEl, "ID", gc.getId());
-				addElement(doc, cgEl, "tag", gc.getTag());
-				addElement(doc, cgEl, "version", new Integer(gc.getVersion()).toString());
-			}
-		
-			// write it
-			resp.setCharacterEncoding("UTF-8");
-			resp.setContentType("text/xml");		
-			Writer w = resp.getWriter();
-			// TODO (standard) Xstream doesn't work on GAE :-(
-			Transformer dt = TransformerFactory.newInstance().newTransformer();
-			dt.transform(new DOMSource(doc), new StreamResult(w));
-			w.close();
-
-		}
-		catch (Exception e) {
-			logger.log(Level.WARNING, "Getting returning GameConfigurations", e);
-			resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.toString());
-			return;
-		}
-		finally {
-			em.close();
+		Element arrayEl = doc.createElement("array");
+		doc.appendChild(arrayEl);
+	
+		for (GameConfiguration gc : results) {
+			Element itemEl = doc.createElement("item");
+			arrayEl.appendChild(itemEl);
+			Element cgEl = doc.createElement("ContentGroup");
+			itemEl.appendChild(cgEl);
+			addElement(doc, cgEl, "ID", gc.getId());
+			addElement(doc, cgEl, "tag", gc.getTag());
+			addElement(doc, cgEl, "version", new Integer(gc.getVersion()).toString());
 		}
 	}
-	private static void addElement(Document doc, Element pel, String tag, String value) {
-		Element el = doc.createElement(tag);
-		pel.appendChild(el);
-		el.appendChild(doc.createTextNode(value));		
-	}
-
 }

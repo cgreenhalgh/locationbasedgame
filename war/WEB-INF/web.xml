@@ -13,17 +13,49 @@
   <servlet-name>ContentGroupList</servlet-name>
   <servlet-class>uk.ac.horizon.ug.locationbasedgame.lobbyapi.ContentGroupList</servlet-class>
  </servlet>
+ <servlet>
+  <servlet-name>LobbyCreate</servlet-name>
+  <servlet-class>uk.ac.horizon.ug.locationbasedgame.lobbyapi.LobbyCreate</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>GameCRUDServlet</servlet-name>
+  <servlet-class>uk.ac.horizon.ug.locationbasedgame.author.GameCRUDServlet</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>ControlGameServlet</servlet-name>
+  <servlet-class>uk.ac.horizon.ug.locationbasedgame.lobbyapi.ControlGameServlet</servlet-class>
+ </servlet>
  <servlet-mapping>
   <servlet-name>Locationbasedgame</servlet-name>
   <url-pattern>/locationbasedgame</url-pattern>
  </servlet-mapping>
  <servlet-mapping>
   <servlet-name>GameConfigurationCRUDServlet</servlet-name>
-  <url-pattern>author/configuration/*</url-pattern>
+  <url-pattern>/author/configuration/*</url-pattern>
  </servlet-mapping>
  <servlet-mapping>
   <servlet-name>ContentGroupList</servlet-name>
-  <url-pattern>orchestration/content_group_list</url-pattern>
+  <url-pattern>/orchestration/content_group_list</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>LobbyCreate</servlet-name>
+  <url-pattern>/orchestration/lobby_create</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>GameCRUDServlet</servlet-name>
+  <url-pattern>/author/game/*</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>ControlGameServlet</servlet-name>
+  <url-pattern>/orchestration/play.html</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>ControlGameServlet</servlet-name>
+  <url-pattern>/orchestration/stop.html</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>ControlGameServlet</servlet-name>
+  <url-pattern>/orchestration/finish.html</url-pattern>
  </servlet-mapping>
  <welcome-file-list>
   <welcome-file>index.html</welcome-file>

@@ -53,6 +53,10 @@ public class GameConfiguration {
     public static final Key makeKey(String tag, int version) {
     	return KeyFactory.createKey(GameConfiguration.class.getSimpleName(), tag+":"+version);
     }
+    /** generate key */
+    public static final Key idToKey(String id) {
+    	return KeyFactory.createKey(GameConfiguration.class.getSimpleName(), id);
+    }
 
 	/**
 	 * @return the key
