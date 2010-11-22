@@ -25,6 +25,14 @@
   <servlet-name>ControlGameServlet</servlet-name>
   <servlet-class>uk.ac.horizon.ug.locationbasedgame.lobbyapi.ControlGameServlet</servlet-class>
  </servlet>
+ <servlet>
+  <servlet-name>RpcLogin</servlet-name>
+  <servlet-class>uk.ac.horizon.ug.locationbasedgame.lobbyapi.RpcLogin</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>InformLocation</servlet-name>
+  <servlet-class>uk.ac.horizon.ug.locationbasedgame.client.InformLocation</servlet-class>
+ </servlet>
  <servlet-mapping>
   <servlet-name>Locationbasedgame</servlet-name>
   <url-pattern>/locationbasedgame</url-pattern>
@@ -56,6 +64,14 @@
  <servlet-mapping>
   <servlet-name>ControlGameServlet</servlet-name>
   <url-pattern>/orchestration/finish.html</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>RpcLogin</servlet-name>
+  <url-pattern>/rpc/login</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>InformLocation</servlet-name>
+  <url-pattern>/rpc/location</url-pattern>
  </servlet-mapping>
  <welcome-file-list>
   <welcome-file>index.html</welcome-file>

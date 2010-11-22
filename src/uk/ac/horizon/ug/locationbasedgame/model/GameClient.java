@@ -39,7 +39,7 @@ public class GameClient {
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Key key; 
     /** current conversation Id */
-    private String currentConverationId;
+    private String currentConversationId;
     /** version */
     private Key gameKey;
     /** client Id (from client); note that the same client device could concurrently be engaged in multiple games! */
@@ -74,16 +74,16 @@ public class GameClient {
 		this.key = key;
 	}
 	/**
-	 * @return the currentConverationId
+	 * @return the currentConversationId
 	 */
-	public String getCurrentConverationId() {
-		return currentConverationId;
+	public String getCurrentConversationId() {
+		return currentConversationId;
 	}
 	/**
-	 * @param currentConverationId the currentConverationId to set
+	 * @param currentConversationId the currentConversationId to set
 	 */
-	public void setCurrentConverationId(String currentConverationId) {
-		this.currentConverationId = currentConverationId;
+	public void setCurrentConversationId(String currentConversationId) {
+		this.currentConversationId = currentConversationId;
 	}
 	/**
 	 * @return the gameKey

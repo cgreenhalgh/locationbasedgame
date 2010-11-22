@@ -24,8 +24,15 @@ package uk.ac.horizon.ug.locationbasedgame.author;
  *
  */
 public interface JsonConstants {
+	public static final String ALTITUDE_METRES = "altitudeMetres";
+	public static final String CLIENT_ID = "clientId";
+	public static final String CONVERSATION_ID = "conversationId";
 	public static final String GAME_CONFIGURATION_ID = "gameConfigurationId";
 	public static final String ID = "id";
+	public static final String LATITUDE_E6 = "latitudeE6";
+	public static final String LONGITUDE_E6= "longitudeE6";
+	public static final String NICKNAME = "nickname";
+	public static final String RADIUS_METRES = "radiusMetres";
 	public static final String STATUS = "status";
 	public static final String TAG = "tag";
 	public static final String TITLE = "title";

@@ -1,0 +1,19 @@
+<!-- Indices written at Mon, 22 Nov 2010 15:29:26 UTC -->
+
+<datastore-indexes>
+
+    <!-- Used 3 times in query history -->
+    <datastore-index kind="ClientLocation" ancestor="false" source="auto">
+        <property name="current" direction="asc"/>
+        <property name="gameKey" direction="asc"/>
+        <property name="createdTime" direction="desc"/>
+    </datastore-index>
+
+    <!-- Used 2 times in query history -->
+    <datastore-index kind="ClientLocation" ancestor="false" source="auto">
+        <property name="current" direction="asc"/>
+        <property name="gameClientKey" direction="asc"/>
+        <property name="createdTime" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>
