@@ -253,7 +253,7 @@ function update_map_other(others) {
                 other_names_map[other.cliendId] = other.nickname;
                 var marker = old_other_markers_map[other.clientId];
                 if (marker == undefined) {
-                    marker = new OpenLayers.Marker(new OpenLayers.LonLat(0, 0), icon.clone());
+                    marker = new OpenLayers.Marker(new OpenLayers.LonLat(0, 0), other_icon.clone());
                     markers.addMarker(marker);
                     new_other_markers_map[other.clientId] = marker;
                 }
