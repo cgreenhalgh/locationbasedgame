@@ -1,2 +1,17 @@
 /* CSS for client.html locationbasedgame client */
 
+/**
+ * Map Examples Specific
+ */
+.smallmap {
+    width: 400px;
+    height: 600px;
+    border: 1px solid #ccc;
+}
+#tags {
+    display: none;
+}
+
+#docs p {
+    margin-bottom: 0.5em;
+}

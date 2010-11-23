@@ -1,13 +1,18 @@
 <html>
 	<head>
 		<title>Locationbasedgame Client</title>
-	    <script type = "text/javascript" src="../resources/jquery-1.4.2.min.js"></script>
-	    <script type = "text/javascript" src="../resources/jquery.json-2.2.min.js"></script>
+	    <script type = "text/javascript" src="../lib/jquery-1.4.2.min.js"></script>
+	    <script type = "text/javascript" src="../lib/jquery.json-2.2.min.js"></script>
+	    <script type="text/javascript" src="../lib/OpenLayers.js"></script>
 		<script type="text/javascript" src="client.js"></script>
+	    <link rel="stylesheet" href="theme/default/style.css" type="text/css" />
 	    <link rel="stylesheet" type="text/css" href="client.css" />
 	</head>
 <body>
 	<h1>Location-based Game Client</h1>
+		<input type="button" value="Debug" onclick="show_div('debug');"/>
+		<input type="button" value="Test" onclick="show_div('test');"/>
+		<input type="button" value="Map" onclick="show_div('map_tab');"/>
 	<div id="debug">
 		<table>
 			<tr><td>clientId</td></tr>
@@ -22,6 +27,21 @@
 			<tr><td id="gameId">Loading...</td></tr>
 			<tr><td>gameStatus</td></tr>
 			<tr><td id="gameStatus">Loading...</td></tr>
+		</table>
+	</div>
+	<div id="test">
+		<table>
+			<tr><td>Location</td></tr>
+			<tr><td id="locationStatus">Loading...</td></tr>
+			<tr><td><input type="button" value="Update Location" onclick="update_server();"/></td></tr>
+			<tr><td>Response</td></tr>
+			<tr><td id="responseStatus"></td></tr>
+		</table>
+	</div>
+	<div id="map_tab">
+	    <div id="map" class="smallmap"></div>	
+		<table>
+			<tr><td><input type="button" value="Update Location" onclick="update_server();"/></td></tr>
 		</table>
 	</div>
 </body>
