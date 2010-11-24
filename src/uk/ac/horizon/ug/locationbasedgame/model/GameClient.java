@@ -47,7 +47,7 @@ public class GameClient {
     /** client nickname */
     private String nickname;
     /** date/time of creation (login) */
-    private long creationTime;
+    private Long createdTime;
     /** state replicated from GameStatus */
     //private GameStatus gameStatus;
     
@@ -122,15 +122,15 @@ public class GameClient {
 		this.nickname = nickname;
 	}
 	/**
-	 * @return the creationTime
+	 * @return the createdTime
 	 */
-	public long getCreationTime() {
-		return creationTime;
+	public long getCreatedTime() {
+		return createdTime;
 	}
 	/**
-	 * @param creationTime the creationTime to set
+	 * @param createdTime the createdTime to set
 	 */
-	public void setCreationTime(long creationTime) {
-		this.creationTime = creationTime;
+	public void setCreatedTime(long createdTime) {
+		this.createdTime = createdTime;
 	}
 }

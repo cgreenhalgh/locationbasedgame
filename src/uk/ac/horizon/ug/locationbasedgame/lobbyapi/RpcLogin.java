@@ -128,7 +128,7 @@ The clientVersion and clientType are currently hard-coded in the ExplodingPlaces
 				logger.info("Creating GameClient "+gameClientKey.getName());
 				gc = new GameClient();
 				gc.setClientId(clientId);
-				gc.setCreationTime(System.currentTimeMillis());
+				gc.setCreatedTime(System.currentTimeMillis());
 				gc.setCurrentConversationId(conversationId);
 				gc.setGameKey(game.getKey());
 				gc.setNickname(nickname);

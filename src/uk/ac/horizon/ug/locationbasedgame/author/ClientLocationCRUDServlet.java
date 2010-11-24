@@ -21,6 +21,7 @@ package uk.ac.horizon.ug.locationbasedgame.author;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.logging.Level;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,38 +32,59 @@ import org.json.JSONWriter;
 
 import com.google.appengine.api.datastore.Key;
 
+import uk.ac.horizon.ug.locationbasedgame.model.ClientLocation;
 import uk.ac.horizon.ug.locationbasedgame.model.GUIDFactory;
 import uk.ac.horizon.ug.locationbasedgame.model.Game;
+import uk.ac.horizon.ug.locationbasedgame.model.GameClient;
 import uk.ac.horizon.ug.locationbasedgame.model.GameConfiguration;
 
 /**
  * @author cmg
  *
  */
-public class GameCRUDServlet extends CRUDServlet implements JsonConstants {
+public class ClientLocationCRUDServlet extends CRUDServlet implements JsonConstants {
+
+	/**
+	 * 
+	 */
+	public ClientLocationCRUDServlet() {
+		super();
+	}
+
+	/**
+	 * @param listFilterPropertyName
+	 * @param listFilterPropertyValue
+	 * @param discardPathParts
+	 */
+	public ClientLocationCRUDServlet(String listFilterPropertyName,
+			Object listFilterPropertyValue, int discardPathParts) {
+		super(listFilterPropertyName, listFilterPropertyValue, discardPathParts);
+	}
 
 	@Override
 	protected Class getObjectClass() {
-		return Game.class;
+		return ClientLocation.class;
 	}
 
 	@Override
 	protected void listObject(JSONWriter jw, Object o) throws JSONException {
-		Game g = (Game)o;
+		ClientLocation g = (ClientLocation)o;
 		jw.object();
 		// ID first
-		jw.key(ID);
-		jw.value(g.getId());
+		jw.key(GAME_CLIENT_ID);
+		jw.value(g.getGameClientKey().getName());
 		jw.key(CREATED_TIME);
 		jw.value(g.getCreatedTime());
-		jw.key(GAME_CONFIGURATION_ID);
-		jw.value(g.getGameConfigurationKey().getName());
-		jw.key(STATUS);
-		jw.value(g.getStatus().toString());
-		jw.key(TAG);
-		jw.value(g.getTag());
-		jw.key(TITLE);
-		jw.value(g.getTitle());
+		jw.key(CURRENT);
+		jw.value(g.isCurrent());
+		jw.key(ALTITUDE_METRES);
+		jw.value(g.getAltitudeMetres());
+		jw.key(LATITUDE_E6);
+		jw.value(g.getLatitudeE6());
+		jw.key(LONGITUDE_E6);
+		jw.value(g.getLongitudeE6());
+		jw.key(RADIUS_METRES);
+		jw.value(g.getRadiusMetres());
 		jw.endObject();
 	}
 
@@ -73,7 +95,7 @@ public class GameCRUDServlet extends CRUDServlet implements JsonConstants {
 		Iterator keys = json.keys();
 		while(keys.hasNext()) {
 			String key = (String)keys.next();
-			throw new JSONException("Unsupported key '"+key+"' in Game: "+json);
+			throw new JSONException("Unsupported key '"+key+"' in ClientLocation: "+json);
 
 		}
 		return gc;
@@ -81,24 +103,7 @@ public class GameCRUDServlet extends CRUDServlet implements JsonConstants {
 
 	@Override
 	protected Key validateCreate(Object o) throws RequestException {
-		throw new RequestException(HttpServletResponse.SC_BAD_REQUEST,"cannot create a Game like this");
+		throw new RequestException(HttpServletResponse.SC_BAD_REQUEST,"cannot create a ClientLocation like this");
 	}
 
-	/* (non-Javadoc)
-	 * @see uk.ac.horizon.ug.locationbasedgame.author.CRUDServlet#getChildScopeServlet(java.lang.String, java.lang.String)
-	 */
-	@Override
-	protected CRUDServlet getChildScopeServlet(String id, String childScope)
-			throws RequestException {
-		if (childScope.equals("client")) {
-			return new GameClientCRUDServlet("gameKey", Game.idToKey(id), 2);
-		}
-		if (childScope.equals("location")) {
-			return new ClientLocationCRUDServlet("gameKey", Game.idToKey(id), 2);
-		}
-		// TODO Auto-generated method stub
-		return super.getChildScopeServlet(id, childScope);
-	}
-	
-	
 }

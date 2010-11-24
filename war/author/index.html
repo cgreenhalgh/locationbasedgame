@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>Locationbasedgame Author page</title>
+	    <script type = "text/javascript" src="../lib/jquery-1.4.2.min.js"></script>
+	    <script type = "text/javascript" src="../lib/jquery.json-2.2.min.js"></script>
+		<script type="text/javascript" src="author.js"></script>
+	    <link rel="stylesheet" type="text/css" href="author.css" />
+	</head>
+	<body>
+		<h1>Locationbasedgame Author page</h1>
+		<input type="button" value="Configuration List" onclick="show_div('configuration_list')"/>
+		<input type="button" value="Configuration" onclick="show_div('configuration')"/>
+		<input type="button" value="Game List" onclick="show_game_list()"/>
+		<input type="button" value="Game" onclick="show_div('game')"/>
+		<div id="configuration_list">
+			<p>All Configurations</p>
+			<table class="list" id="configuration_list_table">
+			</table>
+			<br/>
+			<input type="button" value="Refresh" onclick="refresh_configuration_list()"/>
+		</div>
+		<div id="configuration">
+			<p>Configuration</p>
+			<table class="item" id="configuration_table">
+			</table>
+			<input type="button" value="Refresh" onclick="refresh_configuration()"/>
+			<input type="button" value="Reset" onclick="reset_configuration()"/>
+			<input type="button" value="Add/Update" onclick="add_update_configuration()"/>
+		</div>
+		<div id="game_list">
+			<p>All Games</p>
+			<table class="list" id="game_list_table">
+			</table>
+			<br/>
+			<input type="button" value="Refresh" onclick="refresh_game_list()"/>
+		</div>
+		<div id="game">
+			<p>Selected Game</p>
+			<table class="item" id="game_table">
+			</table>
+			<p>Players (Clients)</p>
+			<table class="item" id="game_client_list_table">
+			</table>
+			<p>Locations</p>
+			<table class="item" id="client_location_list_table">
+			</table>
+			<br/>
+			<input type="button" value="Refresh" onclick="refresh_game()"/>
+		</div>
+	</body>
+</html>

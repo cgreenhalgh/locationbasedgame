@@ -76,7 +76,17 @@
  <welcome-file-list>
   <welcome-file>index.html</welcome-file>
  </welcome-file-list>
- <login-config>
+	<!-- Any authenticated user -->
+    <security-constraint> 
+        <web-resource-collection> 
+	        <web-resource-name>author pages</web-resource-name> 
+            <url-pattern>/author/*</url-pattern> 
+        </web-resource-collection> 
+        <auth-constraint> 
+            <role-name>*</role-name> 
+        </auth-constraint> 
+    </security-constraint>
+<!-- <login-config>
   <auth-method>BASIC</auth-method>
- </login-config>
+ </login-config> -->
 </web-app>
