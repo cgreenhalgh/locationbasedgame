@@ -205,10 +205,10 @@ function map_init() {
 
     var size = new OpenLayers.Size(21, 25);
     var offset = new OpenLayers.Pixel(-(size.w / 2), -size.h);
-    player_icon = new OpenLayers.Icon('../img/marker.png', size, offset);
+    player_icon = new OpenLayers.Icon('../lib/img/marker.png', size, offset);
     // bigger for debug
     size = new OpenLayers.Size(42, 50);
-    other_icon = new OpenLayers.Icon('../img/marker-blue.png', size, offset);
+    other_icon = new OpenLayers.Icon('../lib/img/marker-blue.png', size, offset);
 
     // doesn't work with Marker layer?
     //var selectControl = new OpenLayers.Control.SelectFeature(markers,
